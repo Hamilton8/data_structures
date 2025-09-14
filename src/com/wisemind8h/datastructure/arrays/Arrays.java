@@ -18,6 +18,35 @@ public class Arrays {
         throw new ArrayStoreException("The array is full!");
     }
 
+    public String getElement(int position){
+        if (!(position>=0 && position<this.size)){
+            throw new IllegalArgumentException("Invalid position");
+        }
+        return this.elements[position];
+    }
+
+    public boolean exists(String element){
+        for (int i = 0; i < this.size; i++) {
+            if (this.elements[i].equals(element)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getPosition(String element){
+        for (int i = 0; i < this.size; i++) {
+            if (this.elements[i].equals(element)) return i;
+        }
+        return -1;
+    }
+
+    public boolean isFull(){
+       if (this.size == this.elements.length){
+           return true;
+       }
+       return false;
+    }
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("[");
