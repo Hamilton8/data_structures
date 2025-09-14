@@ -4,7 +4,7 @@ import com.wisemind8h.datastructure.arrays.Arrays;
 
 public class Test01 {
     public static void main(String[] args) {
-        Arrays arrays = new Arrays(2);
+        Arrays arrays = new Arrays(5);
         try {
             arrays.add("Element 01");
             arrays.add("Element 02");
@@ -13,9 +13,6 @@ public class Test01 {
            e.printStackTrace();
         }
 
-
-        for (String elem: arrays.getElements()){
-            System.out.println(elem);
-        }
+        System.out.println(arrays);
     }
 }

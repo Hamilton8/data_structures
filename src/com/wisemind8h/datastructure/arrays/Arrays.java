@@ -18,6 +18,24 @@ public class Arrays {
         throw new ArrayStoreException("The array is full!");
     }
 
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < this.size-1; i++) {
+            sb.append(this.elements[i]);
+            sb.append(", ");
+        }
+
+        if (this.size>0){
+            sb.append(this.elements[this.size-1]);
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+    public int getSize(){
+        return this.size;
+    }
 
     public String[] getElements(){
         return this.elements;
