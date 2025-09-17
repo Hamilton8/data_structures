@@ -1,15 +1,15 @@
 package com.wisemind8h.datastructure.arrays;
 
-public class Arrays {
-    private String[] elements;
+public class Arrays<T> {
+    private T [] elements;
     private int size;
 
     public Arrays(int capacity){
-        this.elements = new String[capacity];
+        this.elements = (T[]) new Object[capacity];
         this.size = 0;
     }
 
-    public void add(String element){
+    public void add(T element){
         this.addCapacity();
         if (size<this.elements.length){
             this.elements[this.size] = element;
@@ -19,7 +19,7 @@ public class Arrays {
         throw new ArrayStoreException("The array is full!");
     }
 
-    public String getElement(int position){
+    public T getElement(int position){
         if (!(position>=0 || position<this.size)){
             throw new IllegalArgumentException("Invalid position");
         }
@@ -49,7 +49,7 @@ public class Arrays {
     public boolean occupiedPosition(int index){
         return this.elements[index]!=null;
     }
-    public boolean add(int index, String element){
+    public boolean add(int index, T element){
         this.addCapacity();
         if (!(index>=0 && index<this.size)){
             throw new IndexOutOfBoundsException("The inputed index is not valid");
@@ -64,7 +64,7 @@ public class Arrays {
 
     private void addCapacity(){
         if (this.size == this.elements.length){
-            String[] newElements = new String[this.elements.length*2];
+            T[] newElements = (T[]) (new Object[this.elements.length*2]);
             for (int i = 0; i < this.elements.length; i++) {
                 newElements[i]=this.elements[i];
             }
@@ -118,7 +118,7 @@ public class Arrays {
         return this.size;
     }
 
-    public String[] getElements(){
+    public T[] getElements(){
         return this.elements;
     }
 
