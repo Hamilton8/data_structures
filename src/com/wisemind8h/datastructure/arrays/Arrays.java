@@ -9,7 +9,8 @@ public class Arrays {
         this.size = 0;
     }
 
-    public void add(String element)throws Exception{
+    public void add(String element){
+        this.addCapacity();
         if (size<this.elements.length){
             this.elements[this.size] = element;
             size++;
@@ -19,7 +20,7 @@ public class Arrays {
     }
 
     public String getElement(int position){
-        if (!(position>=0 && position<this.size)){
+        if (!(position>=0 || position<this.size)){
             throw new IllegalArgumentException("Invalid position");
         }
         return this.elements[position];
@@ -42,11 +43,62 @@ public class Arrays {
     }
 
     public boolean isFull(){
-       if (this.size == this.elements.length){
-           return true;
-       }
-       return false;
+       return this.size==this.elements.length;
     }
+
+    public boolean occupiedPosition(int index){
+        return this.elements[index]!=null;
+    }
+    public boolean add(int index, String element){
+        this.addCapacity();
+        if (!(index>=0 && index<this.size)){
+            throw new IndexOutOfBoundsException("The inputed index is not valid");
+        }
+        for (int i = this.size-1; i >= index; i--) {
+            this.elements[i+1] = this.elements[i];
+        }
+        this.elements[index] = element;
+        this.size++;
+        return true;
+    }
+
+    private void addCapacity(){
+        if (this.size == this.elements.length){
+            String[] newElements = new String[this.elements.length*2];
+            for (int i = 0; i < this.elements.length; i++) {
+                newElements[i]=this.elements[i];
+            }
+            this.elements = newElements;
+        }
+    }
+
+    public void remove(int index){
+        if (!(index>=0 || index<this.size)){
+            throw new IndexOutOfBoundsException("Invalid position!");
+        }
+        for (int i = index; i < this.elements.length-1; i++) {
+            this.elements[i] =this.elements[i+1];
+        }
+        size--;
+    }
+
+    public void remove(String element){
+        int index= getPosition(element);
+        if (index>-1){
+            remove(index);
+        }
+    }
+
+    public int lastIndexOf(String element){
+        int last = -1;
+        for (int i = this.size-1; i >= 0; i--) {
+           if (this.elements[i].equals(element)){
+               return i;
+           }
+        }
+        return -1;
+    }
+
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("[");
