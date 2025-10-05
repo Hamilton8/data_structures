@@ -8,7 +8,9 @@ public class Arrays<T> {
         this.elements = (T[]) new Object[capacity];
         this.size = 0;
     }
-
+    public Arrays(){
+ 
+    }
     public void add(T element){
         this.addCapacity();
         if (size<this.elements.length){
