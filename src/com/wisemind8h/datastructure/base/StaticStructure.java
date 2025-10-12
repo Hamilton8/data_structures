@@ -2,7 +2,7 @@ package com.wisemind8h.datastructure.base;
 
 public class StaticStructure<T> {
 
-    private T [] elements;
+    public T [] elements;
     private int size;
 
     public StaticStructure(int capacity){
@@ -10,7 +10,7 @@ public class StaticStructure<T> {
         this.size = 0;
     }
     public StaticStructure(){
-        this.elements = (T[]) new Object[10];
+        this(10);
     }
     protected boolean add(T element){
         this.addCapacity();

@@ -19,7 +19,7 @@ public class Stack<T> extends StaticStructure<T> {
     public T pop(){
         if (!isEmpty()){
             super.remove(this.getSize());
-            return super.getElement(getSize());
+            return super.elements[super.getSize()];
         }
         throw new RuntimeException("The stack is empty!");
     }
