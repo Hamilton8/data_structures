@@ -5,11 +5,11 @@ public class PriorityQueue<T> extends Queue<T>{
         Comparable<T> key = (Comparable<T>) element;
 
         int i;
-        for (i = 0; i < elements.length; i++) {
-            if (key.compareTo(elements[i] )> 0) {
+        for (i = 0; i < super.getSize(); i++) {
+            if (key.compareTo(elements[i] ) < 0) {
                 break;
             }
         }
-        super.add(1,element);
+        super.add(i,element);
     }
 }

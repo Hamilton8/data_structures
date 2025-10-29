@@ -1,6 +1,6 @@
 package com.wisemind8h.datastructure.base;
 
-public class StaticStructure<T> {
+public class  StaticStructure<T> {
 
     public T [] elements;
     private int size;
